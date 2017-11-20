@@ -33,6 +33,7 @@ gem 'paranoia', '~> 2.3', '>= 2.3.1' # when you called destroy on an Active Reco
 gem 'public_activity', '~> 1.5' # Easy activity tracking for your ActiveRecord models.
 gem 'rails-i18n', :git => 'https://github.com/svenfuchs/rails-i18n.git', branch: 'master' # For 4.x
 # gem 'ransack', '~> 1.8', '>= 1.8.3'
+gem 'rails_admin', '~> 1.2'
 gem 'responders', '~> 2.4' # A set of Rails responders to dry up your application
 gem 'rolify'
 gem 'rubyzip', '~> 1.2', '>= 1.2.1' # is a ruby module for reading and writing zip files
