@@ -1,0 +1,26 @@
+<nav class="admin-sidebar">
+  <%= link_to t('admin.dashboard.index.title'), admin_root_path %>
+  <ul id="admin_menu" class="vertical menu" data-accordion-menu>
+    <li id="users" <%= 'class=active' if controller_name == 'users' && params[:role].nil?  %>>
+      <%= link_to admin_users_path do %>
+          <span class="icon-users"></span>
+          <%= t('admin.menu.users') %>
+      <% end %>
+    </li>
+    <li id="settings" <%= 'class=active' if controller_name == 'settings' %>>
+      <%= link_to admin_settings_path do %>
+        <span class="icon-cogs"></span>
+        <%= t('admin.menu.settings') %>
+      <% end %>
+    </li>
+
+    <li id="stats" <%= 'class=active' if controller_name == 'stats' %>>
+      <%= link_to admin_root_path do %>
+        <span class="icon-chart-bar"></span>
+        <%= t('admin.menu.stats') %>
+      <% end %>
+    </li>
+
+  </ul>
+</nav>
+
