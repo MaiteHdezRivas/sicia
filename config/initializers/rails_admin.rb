@@ -38,4 +38,11 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  RailsAdmin.config do |c|
+    #c.excluded_models = [RelTest]
+    c.authenticate_with {}
+    c.current_user_method { User.first }
+    c.authorize_with :cancan
+    c.audit_with :history, User
+  end
 end

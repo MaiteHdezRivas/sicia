@@ -25,6 +25,7 @@ module Sici
     # Add the new directories to the locales load path
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    #config.paths['app/views'] << 'app/views/devise'
 
     config.generators do |g|
       g.test_framework :rspec,
