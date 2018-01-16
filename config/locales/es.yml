@@ -34,8 +34,6 @@ es:
       ie_title: Esta web no está optimizada para tu navegador
     footer:
       copyright: Copyrigth %{year} Ayuntamiento de Madrid.
-    header:
-      logo: Madrid
   mailers:
     no_reply: no_reply.madrid.es
   proposal:
@@ -66,7 +64,7 @@ es:
     print:
       print_button: Imprimir
     subnavigation_menu:
-      documentation: Documentación
+      admin: Administración
       proposal: Propuestas
     target_blank_html: Nueva pestaña
     top_links:
