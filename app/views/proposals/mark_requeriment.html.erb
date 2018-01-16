@@ -22,9 +22,9 @@
   </div>
   <div class="row">
     <div class="tabs-content" data-tabs-content="requeriment-tabs">
-      <%= render 'requeriments_tab', tab: "basic_req", kind: "RB", proposal: @proposal, f: f, active: "is-active" %>
-      <%= render 'requeriments_tab', tab: "document",  kind: "DOC", proposal: @proposal, f: f, active: "" %>
-      <%= render 'requeriments_tab', tab: "permanent_control", kind: "CP", proposal: @proposal, f: f , active: "" %>
+      <%= render 'requeriments_tab', tab: "basic_req", kind: "RB", f: f, proposal: @proposal, active: "is-active" %>
+      <%= render 'requeriments_tab', tab: "document",  kind: "DOC", f: f, proposal: @proposal, active: "" %>
+      <%= render 'requeriments_tab', tab: "permanent_control", kind: "CP", f: f , proposal: @proposal, active: "" %>
     </div>
   </div>
 

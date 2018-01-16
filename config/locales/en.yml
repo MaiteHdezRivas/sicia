@@ -41,7 +41,7 @@ en:
   proposal_requeriment:
     verification:
       'false': NO CUMPLE
-      not applicable: NO PROCEDE
+      no_apply: NO PROCEDE
       pending: Pendiente de verificación
       'true': CUMPLE
   proposals:

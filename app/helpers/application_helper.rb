@@ -21,4 +21,19 @@ module ApplicationHelper
               end
     l(date, { format: format }.merge(options)) if format
   end
+
+
+  def show_requeriment_check(req_check)
+    case req_check
+      when nil
+        I18n.t("proposal_requeriment.verification.pending" )
+      when 0
+        I18n.t("proposal_requeriment.verification.false" )
+      when 1
+        I18n.t("proposal_requeriment.verification.true" )
+      when 2
+        I18n.t("proposal_requeriment.verification.no_apply" )
+    end
+  end
+
 end

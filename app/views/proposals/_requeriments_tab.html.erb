@@ -5,29 +5,36 @@
         <th class="text-left requeriment-code"> <%= t('activerecord.models.requeriment.code') %> </th>
         <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.description') %> </th>
         <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.observance') %> </th>
+        <th class="text-left requeriment"> <%= t('activerecord.models.requeriment.revised') %> </th>
         <% if action_name == 'show' %>
-         <th class="text-left"> <%= t('activerecord.models.requeriment.update_data') %></th>
+         <th class="text-left requeriment-description"> <%= t('activerecord.models.requeriment.update_data') %></th>
         <% end %>
       </tr>
-      <% proposal_requeriments(proposal, kind).each do |pr| %>
-        <% if action_name == 'mark_requeriment' %>
-          <%= f.fields_for :proposal_requeriment do |p_req_f| %>
-            <%= p_req_f.hidden_field :id %>
-            <%= p_req_f.hidden_field :code %>
+      <% if action_name == 'mark_requeriment' %>
+        <tr>
+          <th class="text-left" colspan="2"></th>
+          <th class="text-left requeriment "> <%= "No/Si/No procede"%> </th>
+          <th class="text-left requeriment "> <%= "No/Si/No procede"%> </th>
+        </tr>
+      <% end %>
+      <% if action_name == 'mark_requeriment' %>
+        <%= f.fields_for :proposal_requeriments, proposal_requeriments(proposal, kind) do |builder| %>
+          <%= render 'proposal_requeriment_fields', builder: builder , kind: kind%>
+        <% end %>
+      <% else %>
+          <% proposal_requeriments(proposal, kind).each do |pr|%>
             <tr>
               <th> <%= pr.requeriment.full_code %></th>
               <td> <%= pr.requeriment.description %> </td>
-              <td class="text-center"><%= p_req_f.check_box :initial_check, label: false %></td>
-             </tr>
-          <% end %>
-        <% else %>
-            <tr>
-              <td> <%= pr.requeriment.full_code %></td>
-              <td> <%= pr.requeriment.description %></td>
-              <td class= "text-center" > <%= pr.humanize_initial_check %></td>
+              <td class= "text-center">
+                <%= show_requeriment_check(pr.initial_check) %>
+              </td>
+              <td class= "text-center">
+                <%= show_requeriment_check(pr.revised_check) %>
+              </td>
               <td> <%= pr.updated_by %> - <%= show_simple_date(pr.updated_at) %> </td>
             </tr>
-        <% end %>
+          <% end %>
       <% end %>
     </table>
   </fieldset>

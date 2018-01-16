@@ -17,6 +17,7 @@ class ProposalsController < ApplicationController
   end
 
   def update
+    @proposal.notify_to_confirmation = @proposal.notify_to
     if @proposal.update(proposal_params)
       flash[:notice] = t('flash.update.success', resource: t('activerecord.models.proposal.one'))
       redirect_to @proposal

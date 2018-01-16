@@ -2,9 +2,8 @@ class ProposalRequeriment < ActiveRecord::Base
   belongs_to :proposal
   belongs_to :requeriment
 
-  def humanize_initial_check
-    initial_check.nil? ? 'Pendiente' : I18n.t("proposal_requeriment.verification.#{initial_check.to_s}" )
-  end
+  scope :by_proposal, lambda { |id| where(proposal_id: id) }
+  scope :by_requeriment_kind, lambda { |kind| joins(:requeriments).where(kind: kind) }
 
   def self.by_proposal_and_kind_requeriment(proposal, kind)
     proposal_requeriments = []
@@ -13,4 +12,5 @@ class ProposalRequeriment < ActiveRecord::Base
     end
     proposal_requeriments
   end
+
 end

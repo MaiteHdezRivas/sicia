@@ -68,14 +68,10 @@ RSpec.feature "Proposals", type: :feature do
     expect(page).to have_content "Documento contable : #{proposal.accounting_document}"
     expect(page).to have_content "Importe total : #{proposal.amount}"
 
-    expect(page).to have_content 'Tipo de expediente :'
-    expect(page).to have_content "Expediente #{proposal.ic_file.description}"
-    expect(page).to have_content "Procedimiento #{proposal.ic_procedure.description}"
-    expect(page).to have_content "Trámite #{proposal.ic_action.description}"
-
-    expect(page).to have_content 'Otra información'
-    expect(page).to have_content "Fecha de recepción"
-    expect(page).to have_content "Email para notificaciones"
+    expect(page).to have_content 'Expediente:'
+    expect(page).to have_content #{proposal.ic_file.description}
+    expect(page).to have_content #{proposal.ic_procedure.description}
+    expect(page).to have_content #{proposal.ic_action.description}
 
   end
 
@@ -84,8 +80,8 @@ RSpec.feature "Proposals", type: :feature do
 
     visit edit_proposal_path(proposal)
 
-    expect(page).to have__content 'Editar propuesta'
-    expect(page).to have__content 'Cabecera de la propuesta'
+    expect(page).to have_content 'Editar propuesta'
+    expect(page).to have_content 'Cabecera de la propuesta'
     expect(page).to have_content "Ejercicio : #{proposal.trading_year}"
     expect(page).to have_content "Clase de propuesta SAP : #{proposal.sap_kind}"
     expect(page).to have_content "Número de propuesta SAP : #{proposal.sap_proposal}"
@@ -93,10 +89,10 @@ RSpec.feature "Proposals", type: :feature do
     expect(page).to have_content "Documento contable : #{proposal.accounting_document}"
     expect(page).to have_content "Importe total : #{proposal.amount}"
 
-    expect(page).to have_content 'Expediente :'
-    expect(page).to have_content "Expediente #{proposal.ic_file.description}"
-    expect(page).to have_content "Procedimiento #{proposal.ic_procedure.description}"
-    expect(page).to have_content "Trámite #{proposal.ic_action.description}"
+    expect(page).to have_content 'Tipo de expediente :'
+    expect(page).to have_content #{proposal.ic_file.description}
+    #expect(page).to have_content #{proposal.ic_procedure.description}
+    #expect(page).to have_content #{proposal.ic_action.description}
 
     expect(page).to have_content 'Otra información'
     expect(page).to have_content "Fecha de recepción"
