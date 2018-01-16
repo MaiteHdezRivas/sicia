@@ -43,10 +43,6 @@ es:
       no_apply: NO PROCEDE
       pending: Pendiente de verificación
       'true': CUMPLE
-  proposal:
-    show:
-      requeriments:
-        empty: Esta propuesta no tiene requisitos asociados
   proposals:
     edit:
       title: Editar propuesta
