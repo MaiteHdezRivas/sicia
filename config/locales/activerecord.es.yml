@@ -33,7 +33,7 @@ es:
         expense_nature: Naturaleza del gasto
         file_number: Número de expediente
         ic_action: Trámite
-        ic_file: Tipo de expediente
+        ic_file: Expediente
         ic_procedure: Procedimiento
         manager_body: Órgano gestor
         manager_body_id: Órgano gestor
@@ -89,8 +89,8 @@ es:
           one: Requisito de control permanente
           other: Requisitos de control permanente
         DOC:
-          one: Documento
-          other: Documentos
+          one: Informe preceptivo
+          other: Informes preceptivos
         RB:
           one: Requisito básico
           other: Requisitos básicos
@@ -100,6 +100,7 @@ es:
         observance: Verificado
         one: Requisito
         other: Requisitos
+        revised: Revisado
         update_data: Datos de actualización
       sap_code:
         one: Código SAP

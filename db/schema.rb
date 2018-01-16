@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221111621) do
+ActiveRecord::Schema.define(version: 20180108095043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 20171221111621) do
     t.string   "updated_by"
     t.datetime "revision_updated_at"
     t.string   "revision_updated_by"
-    t.boolean  "initial_check"
-    t.boolean  "revised_check"
+    t.integer  "initial_check"
+    t.integer  "revised_check"
     t.index ["proposal_id"], name: "index_proposal_requeriments_on_proposal_id", using: :btree
     t.index ["requeriment_id"], name: "index_proposal_requeriments_on_requeriment_id", using: :btree
   end

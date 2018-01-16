@@ -1,0 +1,15 @@
+<tr>
+<th> <%= builder.object.requeriment.full_code %></th>
+<td> <%= builder.object.requeriment.description %> </td>
+<td>
+  <%= builder.radio_button :initial_check, "0", title: "NO", label: false %>
+  <%= builder.radio_button :initial_check, "1", title: "SI", label: false %>
+  <%= builder.radio_button :initial_check, "2", title: "No procede", label: false %>
+</td>
+
+<td>
+  <%= builder.radio_button :revised_check, "0", title: "NO", label: false %>
+  <%= builder.radio_button :revised_check, "1", title: "SI", label: false %>
+  <%= builder.radio_button :revised_check, "2", title: "No procede", label: false %>
+</td>
+</tr>

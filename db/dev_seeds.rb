@@ -116,7 +116,7 @@ p "Update user and time in proposal_requeriment..."
 p "A actualizar #{ProposalRequeriment.count.to_s}"
 
 ProposalRequeriment.all.each do |prop_req|
-#  prop_req.initial_ckeck = [true, true, true, false, nil].sample
+  prop_req.initial_check = [true, true, true, false, nil].sample
   prop_req.updated_by = User.reorder("RANDOM()").first.full_name
   prop_req.updated_at = rand((Time.current - 2.months) .. (Time.current - 1.day))
   prop_req.save

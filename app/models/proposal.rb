@@ -20,7 +20,6 @@ class Proposal < ApplicationRecord
   has_many :requeriments, through: :proposal_requeriments
 
   accepts_nested_attributes_for :proposal_requeriments
-  accepts_nested_attributes_for :requeriments
 
   validates :sicia_number,
             :ic_file,
@@ -52,6 +51,10 @@ class Proposal < ApplicationRecord
 
   def manual_proposal?
     !sap_proposal.present?
+  end
+
+  def sicia_number
+    trading_year.to_s + '/' + id.to_s.rjust(6, "0")
   end
 
   def self.main_columns_automatic_sap

@@ -14,10 +14,11 @@ class ProposalsController < ApplicationController
   end
 
   def edit
-
+    @proposal.notify_to_confirmation = @proposal.notify_to
   end
 
   def update
+    @proposal.notify_to_confirmation = @proposal.notify_to
     if @proposal.update(proposal_params)
       flash[:notice] = t('flash.update.success', resource: t('activerecord.models.proposal.one'))
       redirect_to @proposal
@@ -68,8 +69,14 @@ class ProposalsController < ApplicationController
                                      :notify_to, :notify_to_confirmation,
                                      :society_id, :sicia_number,
                                      proposal_requeriments_attributes: [
-                                         :requeriment_id, :revision_updated_at,  :revision_updated_by,
-                                         :initial_check, :revised_check ]
+                                         :id,
+                                         :requeriment_id,
+                                         :proposal_id,
+                                         :revision_updated_at,
+                                         :revision_updated_by,
+                                         :initial_check,
+                                         :revised_check 
+                                     ]
     )
   end
 
