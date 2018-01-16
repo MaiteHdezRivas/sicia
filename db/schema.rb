@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20180108095043) do
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
+  create_table "approval_bodies", force: :cascade do |t|
+    t.integer  "trading_year"
+    t.string   "code"
+    t.string   "description"
+    t.date     "valid_to"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["code"], name: "index_approval_bodies_on_code", using: :btree
+    t.index ["trading_year"], name: "index_approval_bodies_on_trading_year", using: :btree
+  end
+
   create_table "ic_action_requeriments", force: :cascade do |t|
     t.integer  "ic_action_id"
     t.integer  "requeriment_id"
@@ -81,11 +92,12 @@ ActiveRecord::Schema.define(version: 20180108095043) do
   create_table "manager_bodies", force: :cascade do |t|
     t.integer  "trading_year"
     t.string   "code"
-    t.string   "budget_center"
-    t.string   "budget_section"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "society_id"
     t.index ["code"], name: "index_manager_bodies_on_code", using: :btree
+    t.index ["society_id"], name: "index_manager_bodies_on_society_id", using: :btree
     t.index ["trading_year"], name: "index_manager_bodies_on_trading_year", using: :btree
   end
 
@@ -111,8 +123,6 @@ ActiveRecord::Schema.define(version: 20180108095043) do
     t.integer  "ic_procedure_id"
     t.integer  "ic_action_id"
     t.string   "title"
-    t.string   "manager_body"
-    t.string   "approval_body"
     t.decimal  "amount",              precision: 15, scale: 2
     t.string   "sap_kind"
     t.string   "accounting_document"
@@ -129,9 +139,16 @@ ActiveRecord::Schema.define(version: 20180108095043) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.string   "updated_by"
+    t.integer  "society_id"
+    t.integer  "sicia_number"
+    t.integer  "manager_body_id"
+    t.integer  "approval_body_id"
+    t.index ["approval_body_id"], name: "index_proposals_on_approval_body_id", using: :btree
     t.index ["ic_action_id"], name: "index_proposals_on_ic_action_id", using: :btree
     t.index ["ic_file_id"], name: "index_proposals_on_ic_file_id", using: :btree
     t.index ["ic_procedure_id"], name: "index_proposals_on_ic_procedure_id", using: :btree
+    t.index ["manager_body_id"], name: "index_proposals_on_manager_body_id", using: :btree
+    t.index ["society_id"], name: "index_proposals_on_society_id", using: :btree
     t.index ["trading_year"], name: "index_proposals_on_trading_year", using: :btree
   end
 
@@ -181,20 +198,51 @@ ActiveRecord::Schema.define(version: 20180108095043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "societies", force: :cascade do |t|
+    t.string   "code"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["code"], name: "index_societies_on_code", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "ayre"
+    t.integer  "uweb_id"
+    t.string   "name"
+    t.string   "first_surname"
+    t.string   "second_surname"
+    t.string   "document_number"
+    t.string   "document_type"
+    t.integer  "pernr"
+    t.string   "phone"
+    t.string   "official_position"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
-  end
-
+  add_foreign_key "ic_action_requeriments", "ic_actions"
+  add_foreign_key "ic_action_requeriments", "requeriments"
   add_foreign_key "ic_actions", "ic_procedures"
   add_foreign_key "ic_procedures", "ic_files"
+  add_foreign_key "proposal_requeriments", "proposals"
+  add_foreign_key "proposal_requeriments", "requeriments"
+  add_foreign_key "proposals", "approval_bodies"
   add_foreign_key "proposals", "ic_actions"
   add_foreign_key "proposals", "ic_files"
   add_foreign_key "proposals", "ic_procedures"
+  add_foreign_key "proposals", "manager_bodies"
+  add_foreign_key "proposals", "societies"
 end
