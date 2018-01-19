@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 # gem 'dalli', '~> 2.7', '>= 2.7.6' # TODO High performance memcached client for Ruby usado en consul
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.2' # TODO ActiveRecord backend for Delayed::Job, usado en consul
 gem 'devise', '~> 4.2'
+gem 'factory_girl_rails', '~> 4.8.0'
+gem 'faker', '~> 1.7.3'
 gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
 gem 'foundation_rails_helper', '~> 3.0' # Rails for zurb foundation CSS framework. Form builder, flash message, ...
 gem 'friendly_id', '~> 5.1.0' # TODO ¿?
@@ -49,8 +51,6 @@ gem 'rails_admin', '~> 1.2'
 group :development, :test do
   gem 'bullet', '~> 5.6', '>= 5.6.1' # help to kill N+1 queries and unused eager loading.
   gem 'byebug', '~> 9.1.0'
-  gem 'factory_girl_rails', '~> 4.8.0'
-  gem "faker", '~> 1.7.3'
   gem 'i18n-tasks', '~> 0.9.15'
   gem 'letter_opener_web', '~> 1.3.0' # Gives letter_opener an interface for browsing sent emails
   gem 'rubocop', '~> 0.49.1', require: false

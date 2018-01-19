@@ -1,7 +1,7 @@
 require 'database_cleaner'
 require 'factory_girl'
 
-Faker::Config.locale = :es
+#Faker::Config.locale = :es
 
 
 DatabaseCleaner.clean_with :truncation
@@ -13,6 +13,12 @@ puts " ✅"
 print "Creating Users"
 
 2.times { FactoryGirl.create :user}
+
+SapCode.create(sap_field: 'FORMA_ADJUD', sicia_att: 'adjudication_way',
+               code: '001', description: 'Forma adjudicación 001')
+SapCode.create(sap_field: 'FORMA_ADJUD', sicia_att: 'adjudication_way',
+               code: '002', description: 'Forma adjudicación 002')
+
 
 puts " ✅"
 
