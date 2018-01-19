@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'proposals#index'
   get 'welcome/index'
 
-  resources :proposals do
+  resources :proposals, except: [:index] do
     member {
       get :mark_requeriment
     }
