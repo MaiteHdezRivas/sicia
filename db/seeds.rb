@@ -88,7 +88,7 @@ print "Importing approval bodies ..."
 Rake::Task['sap_import:approval_bodies'].invoke
 
 print "Importing adjudication ways ..."
-#Rake::Task['sap_import:adjudication_ways'].invoke
+Rake::Task['sap_import:adjudication_ways'].invoke
 
 puts " ✅"
 puts "End of process!!!"
