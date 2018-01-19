@@ -1,0 +1,11 @@
+<tr>
+  <th> <%= pr.requeriment.full_code %></th>
+  <td> <%= pr.requeriment.description %> </td>
+  <td class= "text-center">
+    <%= show_requeriment_check(pr.initial_check) %>
+  </td>
+  <td class= "text-center">
+    <%= show_requeriment_check(pr.revised_check) %>
+  </td>
+  <td> <%= pr.updated_by %> - <%= show_simple_date(pr.updated_at) %> </td>
+</tr>

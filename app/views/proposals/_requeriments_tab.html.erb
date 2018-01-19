@@ -19,21 +19,11 @@
       <% end %>
       <% if action_name == 'mark_requeriment' %>
         <%= f.fields_for :proposal_requeriments, proposal_requeriments(proposal, kind) do |builder| %>
-          <%= render 'proposal_requeriment_fields', builder: builder , kind: kind%>
+          <%= render 'proposal_requeriment_fields', builder: builder%>
         <% end %>
       <% else %>
           <% proposal_requeriments(proposal, kind).each do |pr|%>
-            <tr>
-              <th> <%= pr.requeriment.full_code %></th>
-              <td> <%= pr.requeriment.description %> </td>
-              <td class= "text-center">
-                <%= show_requeriment_check(pr.initial_check) %>
-              </td>
-              <td class= "text-center">
-                <%= show_requeriment_check(pr.revised_check) %>
-              </td>
-              <td> <%= pr.updated_by %> - <%= show_simple_date(pr.updated_at) %> </td>
-            </tr>
+              <%= render 'proposal_requeriment_show', pr: pr%>
           <% end %>
       <% end %>
     </table>
