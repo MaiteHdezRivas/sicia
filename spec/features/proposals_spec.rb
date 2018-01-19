@@ -5,7 +5,7 @@ RSpec.feature "Proposals", type: :feature do
   scenario "Index show data of proposals" do
     proposals = [create(:proposal, :sap_proposal), create(:proposal, :sap_proposal), create(:proposal, :sap_proposal)]
 
-    visit proposals_path
+    visit search_proposals_path
     expect(page).to have_selector(".proposal-row", count: 3)
     proposals.each do |proposal|
       within("#proposal_#{proposal.id}") do
@@ -22,7 +22,7 @@ RSpec.feature "Proposals", type: :feature do
   scenario "link to show proposal" do
     proposals = [create(:proposal, :sap_proposal), create(:proposal, :sap_proposal), create(:proposal, :sap_proposal)]
 
-    visit proposals_path
+    visit search_proposals_path
     proposal = proposals.first
     within("#proposal_#{proposal.id}") do
       click_link 'Ver detalle'
@@ -33,7 +33,7 @@ RSpec.feature "Proposals", type: :feature do
   scenario "link to edit proposal" do
     proposals = [create(:proposal, :sap_proposal), create(:proposal, :sap_proposal), create(:proposal, :sap_proposal)]
 
-    visit proposals_path
+    visit search_proposals_path
     proposal = proposals.first
 
     within("#proposal_#{proposal.id}") do
@@ -45,7 +45,7 @@ RSpec.feature "Proposals", type: :feature do
   scenario "link to mark requeriment" do
     proposals = [create(:proposal, :sap_proposal), create(:proposal, :sap_proposal), create(:proposal, :sap_proposal)]
 
-    visit proposals_path
+    visit search_proposals_path
     proposal = proposals.first
 
     within("#proposal_#{proposal.id}") do

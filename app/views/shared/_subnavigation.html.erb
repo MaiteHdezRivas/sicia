@@ -3,7 +3,7 @@
     <ul>
       <% if true # current_user %>
           <li>
-            <%= link_to t("shared.subnavigation_menu.proposal"), proposals_path, class: ("active" if controller_name == "user_access") , accesskey: "e" %>
+            <%= link_to t("shared.subnavigation_menu.proposal"), search_proposals_path, class: ("active" if controller_name == "user_access") , accesskey: "e" %>
           </li>
           <li>
             <%= link_to t("shared.subnavigation_menu.admin"), rails_admin_path, class: ("active" if controller_name == "docs"), accesskey: "d" %>
